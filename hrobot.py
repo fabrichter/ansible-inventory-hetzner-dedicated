@@ -172,6 +172,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
             self.inventory.add_host(sname, group="hetzner")
 
             self.inventory.set_variable(sname, "server_ip", to_native(s["server_ip"]))
+            self.inventory.set_variable(sname, "ansible_host", to_native(s["server_ip"]))
             self.inventory.set_variable(sname, "server_number", s["server_number"])
             self.inventory.set_variable(sname, "product", to_native(s["product"]))
             self.inventory.set_variable(sname, "dc", to_native(s["dc"]))
