@@ -169,6 +169,10 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
         for server in servers:
             s = server["server"]
             sname = s["server_name"]
+
+            if not sname or len(sname.strip()) == 0:
+                continue
+
             self.inventory.add_host(sname, group="hetzner")
 
             self.inventory.set_variable(sname, "server_ip", to_native(s["server_ip"]))
